@@ -7,13 +7,14 @@
 clear osversion
 set os CentOS
 set ksdevice eth0
+set cmirror vault.centos.org
 menu ${os} - ${arch} - Image Sig Checks: [${img_sigs_enabled}]
 item 5.5 ${os} 5.5
 isset ${osversion} || choose osversion || goto linux_menu
 echo ${cls}
 iseq ${osversion} 6.8 && set dir ${menu}/${osversion}/os/${arch} ||
-set dir ${osversion}/os/x86_64
-set repo http://vault.centos.org/${dir}
+set dir ${osversion}/os/${arch}
+set repo http://${cmirror}/${dir}
 goto boottype
 
 :boottype
@@ -54,8 +55,8 @@ goto boottype
 
 :bootos_images
 imgfree
-kernel http://vault.centos.org/5.5/os/x86_64/images/pxeboot/vmlinuz repo=${repo} ${params} ${netcfg} ${console}
-initrd http://vault.centos.org/5.5/os/x86_64/images/pxeboot/initrd.img
+kernel http://${cmirror}/${dir}/images/pxeboot/vmlinuz repo=${repo} ${params} ${netcfg} ${console}
+initrd http://${cmirror}/${dir}/images/pxeboot/initrd.img
 echo
 echo MD5sums:
 md5sum vmlinuz initrd.img
