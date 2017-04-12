@@ -13,7 +13,7 @@ isset ${osversion} || choose osversion || goto linux_menu
 echo ${cls}
 iseq ${osversion} 6.8 && set dir ${menu}/${osversion}/os/${arch} ||
 set dir ${osversion}/os/x86_64
-set repo http://vault.centos.org/${dir}/CentOS
+set repo http://vault.centos.org/${dir}
 goto boottype
 
 :boottype
