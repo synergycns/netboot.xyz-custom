@@ -54,8 +54,8 @@ goto boottype
 
 :bootos_images
 imgfree
-kernel http://vault.centos.org /${dir}/images/pxeboot/vmlinuz repo=${repo} ${params} ${netcfg} ${console}
-initrd http://vault.centos.org /${dir}/images/pxeboot/initrd.img
+kernel http://vault.centos.org/${dir}/images/pxeboot/vmlinuz repo=${repo} ${params} ${netcfg} ${console}
+initrd http://vault.centos.org/${dir}/images/pxeboot/initrd.img
 echo
 echo MD5sums:
 md5sum vmlinuz initrd.img
