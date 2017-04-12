@@ -7,14 +7,13 @@
 clear osversion
 set os CentOS
 set ksdevice eth0
-set mirror vault.centos.org 
 menu ${os} - ${arch} - Image Sig Checks: [${img_sigs_enabled}]
 item 5.5 ${os} 5.5
 isset ${osversion} || choose osversion || goto linux_menu
 echo ${cls}
 iseq ${osversion} 6.8 && set dir ${menu}/${osversion}/os/${arch} ||
 set dir ${menu}/${osversion}/os/x86_64
-set repo http://${mirror}/${dir}
+set repo http://vault.centos.org/${dir}
 goto boottype
 
 :boottype
